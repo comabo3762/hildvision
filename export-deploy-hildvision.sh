@@ -4,6 +4,8 @@
 # Lädt WordPress von Synology herunter und deployt zu GitHub/Cloudflare Pages
 # FÜR MACOS - mit SSH Port 28 und korrektem Synology-Benutzer
 # NUTZT TAR STATT RSYNC (Synology blockiert rsync --server über SSH)
+# FIX: entfernt WordPress Query-Strings (?ver=x.x.x) aus Dateinamen & Referenzen,
+#      da diese sonst auf statischem Hosting zu 404s bei CSS/JS führen
 
 set -euo pipefail
 
@@ -86,7 +88,7 @@ if [ "$DOWNLOADED_COUNT" -eq 0 ]; then
 fi
 
 # 4. Pfade in HTML/CSS/JS Dateien korrigieren (macOS sed benötigt '')
-log "🔧 Korrigiere Pfade..."
+log "🔧 Korrigiere Pfade (IP -> Cloudflare Domain)..."
 find "$TEMP_DIR" \( -name "*.html" -o -name "*.css" -o -name "*.js" \) -type f 2>/dev/null | while read file; do
     # Entferne lokale IP-Referenzen und ersetze durch Cloudflare Pages Domain
     sed -i '' 's|http://192\.168\.1\.183/wordpress/|/|g' "$file"
@@ -96,6 +98,32 @@ find "$TEMP_DIR" \( -name "*.html" -o -name "*.css" -o -name "*.js" \) -type f 2
 done
 
 log "✅ Pfade korrigiert"
+
+# 4b. WICHTIGER FIX: WordPress Query-Strings (?ver=x.x.x) aus Dateinamen entfernen
+#     wget speichert z.B. "style.css?ver=1.0.0" als wörtlichen Dateinamen.
+#     Statisches Hosting (Cloudflare Pages) ignoriert die Query beim Datei-Lookup,
+#     sucht also nach "style.css" -> 404 -> keine Formatierung auf der Live-Seite.
+log "🔧 Entferne WordPress Versions-Query-Strings aus Dateinamen..."
+RENAMED_COUNT=0
+find "$TEMP_DIR" -type f -print0 | while IFS= read -r -d '' file; do
+    case "$file" in
+        *\?*)
+            newname="${file%%\?*}"
+            if [ "$file" != "$newname" ] && [ ! -e "$newname" ]; then
+                mv "$file" "$newname" 2>/dev/null || true
+            fi
+            ;;
+    esac
+done
+
+log "🔧 Entferne Query-Strings aus HTML/CSS/JS-Referenzen..."
+find "$TEMP_DIR" \( -name "*.html" -o -name "*.css" -o -name "*.js" \) -type f 2>/dev/null | while read file; do
+    # Entfernt "?irgendwas" direkt nach typischen Asset-Endungen
+    # z.B. href="/style.css?ver=1.0.0" -> href="/style.css"
+    sed -i '' -E 's/(\.(css|js|png|jpe?g|gif|svg|webp|woff2?|ttf|eot|ico))\?[^"'"'"'[:space:])]*/\1/g' "$file"
+done
+
+log "✅ Query-Strings bereinigt"
 
 # 5. Alte public/ Dateien sichern
 log "🔄 Sichere alte Dateien..."

@@ -51,11 +51,11 @@
 **********************/
 @font-face {
     font-family: 'serioussliderglyphs';
-    src:    url('fonts/serioussliderglyphs.eot?ap45ke');
-    src:    url('fonts/serioussliderglyphs.eot?ap45ke') format('embedded-opentype'),
-            url('fonts/serioussliderglyphs.ttf?ap45ke') format('truetype'),
-            url('fonts/serioussliderglyphs.woff?ap45ke') format('woff'),
-            url('fonts/serioussliderglyphs.svg?ap45ke') format('svg');
+    src:    url('fonts/serioussliderglyphs.eot');
+    src:    url('fonts/serioussliderglyphs.eot') format('embedded-opentype'),
+            url('fonts/serioussliderglyphs.ttf') format('truetype'),
+            url('fonts/serioussliderglyphs.woff') format('woff'),
+            url('fonts/serioussliderglyphs.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }
