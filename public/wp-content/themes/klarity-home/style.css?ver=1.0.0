@@ -1,0 +1,132 @@
+/*
+Theme Name: Klarity Home
+Theme URI: https://klarity-home.de
+Author: Markus Hild
+Author URI: https://klarity-home.de
+Description: Block-Theme (Full Site Editing) für Klarity Home – Remote-Beratung für Home Assistant & Smart Home in Hessen und Thüringen. Cream/Ink-Farbschema mit Amber-Akzent, Inter & JetBrains Mono, hairline borders statt Schatten.
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 6.6
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: klarity-home
+Tags: block-theme, full-site-editing, one-page, business, minimal
+*/
+
+/* ---- Block style variations (not expressible via theme.json) ---- */
+
+.wp-block-button.is-style-secondary .wp-block-button__link {
+  background: #FFFFFF;
+  color: #0F1B2D;
+  border: 1px solid #E5E1D8;
+}
+.wp-block-button.is-style-secondary .wp-block-button__link:hover {
+  background: #F5F3EF;
+  border-color: #0F1B2D;
+}
+.wp-block-button.is-style-ghost .wp-block-button__link {
+  background: transparent;
+  color: #0F1B2D;
+  border: 1px solid transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+.wp-block-button.is-style-ghost .wp-block-button__link:hover {
+  text-decoration: underline;
+  text-decoration-color: #E8A33D;
+  text-decoration-thickness: 2px;
+}
+.wp-block-button .wp-block-button__link {
+  transition: background 160ms cubic-bezier(.2,.6,.2,1), color 160ms cubic-bezier(.2,.6,.2,1), border-color 160ms cubic-bezier(.2,.6,.2,1);
+}
+.wp-block-button:not(.is-style-secondary):not(.is-style-ghost) .wp-block-button__link:hover {
+  background: #1F2A3D;
+}
+
+.wp-block-group.is-style-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E1D8;
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.wp-block-details.is-style-faq {
+  border: none;
+  border-bottom: 1px solid #E5E1D8;
+  padding: 20px 0;
+  background: transparent;
+}
+.wp-block-details.is-style-faq summary {
+  font-weight: 600;
+  color: #0F1B2D;
+  cursor: pointer;
+}
+.wp-block-details.is-style-faq p {
+  color: #5B6472;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* Navigation links: amber underline on hover, no color dim */
+.wp-block-navigation a:hover {
+  text-decoration: underline;
+  text-decoration-color: #E8A33D;
+  text-decoration-thickness: 2px;
+}
+.wp-block-navigation .wp-block-navigation-item__content {
+  transition: color 160ms cubic-bezier(.2,.6,.2,1);
+}
+
+/* Focus ring: the accessible use of the accent color */
+a:focus-visible,
+button:focus-visible,
+.wp-block-button__link:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.35);
+}
+
+/* Klarity contact form (rendered by [klarity_kontakt] shortcode) */
+.klarity-form { display: flex; flex-direction: column; gap: 16px; max-width: 480px; }
+.klarity-form label { font-size: 13px; font-weight: 600; color: #0F1B2D; display: block; margin-bottom: 6px; }
+.klarity-form input[type="text"],
+.klarity-form input[type="email"],
+.klarity-form textarea {
+  width: 100%;
+  font-family: var(--wp--preset--font-family--inter), sans-serif;
+  font-size: 15px;
+  padding: 12px 14px;
+  border: 1px solid #E5E1D8;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: #1A1F2E;
+  box-sizing: border-box;
+}
+.klarity-form textarea { min-height: 140px; resize: vertical; }
+.klarity-form .klarity-hp { position: absolute; left: -9999px; }
+.klarity-form button[type="submit"] {
+  font-family: var(--wp--preset--font-family--inter), sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  background: #0F1B2D;
+  color: #F5F3EF;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 22px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 160ms cubic-bezier(.2,.6,.2,1);
+}
+.klarity-form button[type="submit"]:hover { background: #1F2A3D; }
+.klarity-notice {
+  border: 1px solid #E5E1D8;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.klarity-notice.is-success { border-color: #2E7D5B; color: #2E7D5B; }
+.klarity-notice.is-error { border-color: #B8532E; color: #B8532E; }
