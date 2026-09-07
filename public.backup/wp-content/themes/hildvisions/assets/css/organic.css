@@ -22,31 +22,7 @@
 .hv-topic-icon-accent2{background:var(--wp--preset--color--accent-2-tint);color:var(--wp--preset--color--accent-2-deep)}
 .hv-topic-card h3{font-size:20px;margin:0 0 6px}
 .hv-topic-card p{font-size:14px;opacity:.75;margin:0 0 10px}
-/* Neueste Tutorials: responsives Karten-Raster */
-.hv-posts .wp-block-query{margin:0}
-.hv-posts .wp-block-post-template{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin:0;padding:0;list-style:none}
-.hv-posts .wp-block-post-template>li{margin:0;height:100%}
-.hv-post-card{display:flex;flex-direction:column;gap:12px;height:100%;background:var(--wp--preset--color--surface);border-radius:28px;padding:24px;box-shadow:0 1px 2px rgba(46,43,37,.14);transition:box-shadow .2s,transform .2s}
-.hv-post-card:hover{box-shadow:0 6px 18px rgba(46,43,37,.16);transform:translateY(-3px)}
-.hv-post-card>*{margin:0}
-.hv-post-card .wp-block-post-featured-image{margin:0 0 4px}
-.hv-post-card .wp-block-post-featured-image img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;display:block}
-.hv-post-card .wp-block-post-terms{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--wp--preset--color--accent)}
-.hv-post-card .wp-block-post-terms a{text-decoration:none;color:inherit}
-.hv-post-card .wp-block-post-terms a:hover{text-decoration:underline}
-.hv-post-card .wp-block-post-title{font-size:19px;line-height:1.28}
-.hv-post-card .wp-block-post-title a{text-decoration:none;color:var(--wp--preset--color--contrast)}
-.hv-post-card .wp-block-post-title a:hover{color:var(--wp--preset--color--accent)}
-.hv-post-card .wp-block-post-excerpt__excerpt{font-size:14px;line-height:1.6;opacity:.78}
-.hv-post-card .wp-block-post-excerpt__more-link{display:none}
-.hv-post-card .wp-block-post-date{font-size:12px;opacity:.6;margin-top:auto;padding-top:4px}
-/* Kategorie-/Archiv-Seite */
-.hv-archive .wp-block-query-title{font-size:clamp(28px,4vw,38px);margin:0 0 28px}
-.hv-posts .wp-block-query-pagination{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin-top:36px}
-.hv-posts .wp-block-query-pagination a,.hv-posts .wp-block-query-pagination .wp-block-query-pagination-numbers .page-numbers{text-decoration:none;color:var(--wp--preset--color--accent);border:1px solid rgba(198,113,57,.45);border-radius:100px;padding:8px 16px;font-size:14px;font-weight:600;transition:background .2s,color .2s}
-.hv-posts .wp-block-query-pagination a:hover{background:var(--wp--preset--color--accent);color:#fff}
-.hv-posts .wp-block-query-pagination .page-numbers.current{background:var(--wp--preset--color--accent);color:#fff;border-radius:100px;padding:8px 16px;font-size:14px;font-weight:700}
-.hv-posts .wp-block-query-pagination-numbers{display:flex;gap:10px;align-items:center}
+.hv-post-card{background:var(--wp--preset--color--surface);border-radius:32px;padding:20px;gap:12px}
 .hv-affiliate{max-width:1280px;margin:0 auto 56px;padding:clamp(28px,4vw,44px) clamp(20px,4vw,48px);background:var(--wp--preset--color--accent-tint);border-radius:36px;display:flex;gap:32px;flex-wrap:wrap;align-items:center}
 .hv-affiliate-photo{width:220px;height:220px;flex:none;border-radius:24px;background:var(--wp--preset--color--surface);display:flex;align-items:center;justify-content:center;font-size:14px;opacity:.5}
 .hv-affiliate-copy{flex:1;min-width:240px}

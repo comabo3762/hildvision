@@ -12,7 +12,7 @@
 	<atom:link href="/feed/" rel="self" type="application/rss+xml" />
 	<link>https://hildvision.pages.dev/wordpress</link>
 	<description>Natur · Ungeschönt</description>
-	<lastBuildDate>Sun, 20 Feb 2022 11:32:29 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 06 Sep 2026 08:43:29 +0000</lastBuildDate>
 	<language>de-DE</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -28,22 +28,810 @@
 	<height>32</height>
 </image> 
 	<item>
-		<title>Hallo Welt!</title>
-		<link>/2020/12/20/hallo-welt/</link>
-					<comments>/2020/12/20/hallo-welt/#comments</comments>
+		<title>Home Assistant richtig einrichten – die ersten Grundeinstellungen am Mac</title>
+		<link>/grundeinstellungen/</link>
+					<comments>/grundeinstellungen/#respond</comments>
 		
 		<dc:creator><![CDATA[comabo]]></dc:creator>
-		<pubDate>Sun, 20 Dec 2020 11:02:59 +0000</pubDate>
-				<category><![CDATA[Allgemein]]></category>
-		<guid isPermaLink="false">http://192.168.178.92/wordpress/?p=1</guid>
+		<pubDate>Sun, 06 Sep 2026 08:42:53 +0000</pubDate>
+				<category><![CDATA[Home Assistant]]></category>
+		<guid isPermaLink="false">/?p=135</guid>
 
-					<description><![CDATA[Willkommen bei WordPress. Dies ist dein erster Beitrag. Bearbeite oder lösche ihn und beginne mit dem Schreiben!]]></description>
+					<description><![CDATA[Home Assistant läuft – die Oberfläche ist da, das Konto steht. Und jetzt? Bevor du das erste smarte Gerät verbindest, lohnen sich zehn Minuten für ein paar Grundeinstellungen. Sie entscheiden darüber, ob dein System sauber auf Deutsch läuft, ob du im Ernstfall ein Backup hast und ob dein Zugang wirklich sicher ist. Diese Anleitung zeigt [&#8230;]]]></description>
 										<content:encoded><![CDATA[
-<p>Willkommen bei WordPress. Dies ist dein erster Beitrag. Bearbeite oder lösche ihn und beginne mit dem Schreiben!</p>
+<p>Home Assistant läuft – die Oberfläche ist da, das Konto steht. Und jetzt? Bevor du das erste smarte Gerät verbindest, lohnen sich zehn Minuten für ein paar Grundeinstellungen. Sie entscheiden darüber, ob dein System sauber auf Deutsch läuft, ob du im Ernstfall ein Backup hast und ob dein Zugang wirklich sicher ist. Diese Anleitung zeigt dir die richtige Reihenfolge – am Mac und mit dem iPhone.</p>
+
+
+
+<p><em>Zuletzt nachgebaut und verifiziert: September 2026.</em></p>
+
+
+
+<h2 class="wp-block-heading">Worum es geht</h2>
+
+
+
+<p>Nach der Installation ist Home Assistant funktionsfähig, aber noch nicht „deins&#8220;. Sprache, Standort und Einheiten stehen auf Standardwerten, es gibt keine Sicherung, und der Zugang hängt an einem einzelnen Passwort. Das sind genau die Punkte, an denen sich später Ärger entscheidet: eine kaputte SD-Karte ohne Backup, ein englischsprachiges Menü, das die Einarbeitung unnötig schwer macht, oder ein ungeschützter Fernzugriff.</p>
+
+
+
+<p>Die gute Nachricht: Das ist alles in einem Rutsch erledigt. Wir arbeiten die Einstellungen in der Reihenfolge ab, die im Alltag am meisten bringt – erst die Grundlagen (Sprache, Region), dann das Sicherheitsnetz (Updates, Sicherung, Zwei-Faktor), dann die Struktur (Räume) und zum Schluss die Werkzeuge, die dir das Leben leichter machen.</p>
+
+
+
+<div style="background:#2c2c2c;color:#f3ead9;border-radius:16px;padding:22px 24px;margin:8px 0;font-family:inherit">
+  <div style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#c67139;font-weight:800;margin-bottom:14px">Getestet mit</div>
+  <table style="width:100%;border-collapse:collapse;font-size:15px">
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Home Assistant OS</td><td style="padding:4px 0;font-family:monospace">18.2 (64-bit)</td></tr>
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Home Assistant Core</td><td style="padding:4px 0;font-family:monospace">2026.9</td></tr>
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Companion App (iOS)</td><td style="padding:4px 0;font-family:monospace">2026.x</td></tr>
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Mac</td><td style="padding:4px 0;font-family:monospace">macOS Sequoia / Tahoe</td></tr>
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Stand</td><td style="padding:4px 0;font-family:monospace">September 2026</td></tr>
+  </table>
+</div>
+
+
+
+<p>Du findest alle Einstellungen unten links über das Zahnrad <strong>Einstellungen</strong>. Dein persönliches Profil erreichst du über deinen <strong>Namen ganz unten links</strong> in der Seitenleiste.</p>
+
+
+
+<h2 class="wp-block-heading">Die Reihenfolge im Überblick</h2>
+
+
+
+<p>Sieben Einstellungen, grob in drei Blöcke sortiert. Wenn du wenig Zeit hast: Die ersten fünf sind Pflicht, die letzten zwei machen den Alltag angenehmer.</p>
+
+
+
+<figure style="margin:16px 0;text-align:center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" style="width:100%;height:auto;max-width:720px" role="img" aria-label="Drei Blöcke: Grundlagen (Sprache, Region), Sicherheitsnetz (Updates, Sicherung, Zwei-Faktor), Struktur und Werkzeuge (Räume, Add-ons und App)">
+  <rect x="2" y="2" width="716" height="246" rx="16" fill="#f9f0dd" stroke="#e6d8bd"/>
+  <rect x="22" y="40" width="216" height="180" rx="14" fill="#fffdf7" stroke="#e6d8bd"/>
+  <circle cx="130" cy="76" r="20" fill="#f5ead8" stroke="#c67139" stroke-width="1.5"/>
+  <text x="130" y="83" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="18" fill="#c67139">1</text>
+  <text x="130" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="15" fill="#2c2c2c">Grundlagen</text>
+  <text x="130" y="150" text-anchor="middle" font-family="Arial,sans-serif" font-size="12.5" fill="#5f594d">Sprache &amp; Profil</text>
+  <text x="130" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="12.5" fill="#5f594d">Region &amp; Einheiten</text>
+  <rect x="252" y="40" width="216" height="180" rx="14" fill="#fffdf7" stroke="#e6d8bd"/>
+  <circle cx="360" cy="76" r="20" fill="#eef1e6" stroke="#7a8a5e" stroke-width="1.5"/>
+  <text x="360" y="83" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="18" fill="#5f6e46">2</text>
+  <text x="360" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="15" fill="#2c2c2c">Sicherheitsnetz</text>
+  <text x="360" y="150" text-anchor="middle" font-family="Arial,sans-serif" font-size="12.5" fill="#5f594d">Updates &amp; Sicherung</text>
+  <text x="360" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="12.5" fill="#5f594d">Zwei-Faktor-Schutz</text>
+  <rect x="482" y="40" width="216" height="180" rx="14" fill="#2c2c2c"/>
+  <circle cx="590" cy="76" r="20" fill="none" stroke="#e0b487" stroke-width="1.6"/>
+  <text x="590" y="83" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="18" fill="#e0b487">3</text>
+  <text x="590" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="15" fill="#f3ead9">Struktur &amp; Werkzeug</text>
+  <text x="590" y="150" text-anchor="middle" font-family="Arial,sans-serif" font-size="12.5" fill="#b8ae9c">Räume &amp; Add-ons</text>
+  <text x="590" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="12.5" fill="#b8ae9c">iPhone-App</text>
+</svg>
+<figcaption style="font-size:14px;color:#5f594d;margin-top:8px">Von den Grundlagen zum Feinschliff – in dieser Reihenfolge macht es am meisten Sinn.</figcaption>
+</figure>
+
+
+
+<h2 class="wp-block-heading">Schritt 1: Sprache, dein Profil und der erweiterte Modus</h2>
+
+
+
+<p>Die persönlichen Einstellungen gelten pro Benutzerkonto – du stellst sie also für dich ein, nicht fürs ganze System. Klick unten links auf <strong>deinen Namen</strong>, um dein Profil zu öffnen.</p>
+
+
+
+<ol class="wp-block-list">
+
+<li><strong>Sprache:</strong> Stell die Sprache auf <strong>Deutsch</strong>. Die Oberfläche übersetzt sich sofort – kein Neustart nötig.</li>
+
+
+<li><strong>Design:</strong> Wähle hell, dunkel oder „Automatisch&#8220;. „Automatisch&#8220; folgt dem Erscheinungsbild deines Macs bzw. iPhones – tagsüber hell, abends dunkel.</li>
+
+
+<li><strong>Erweiterter Modus:</strong> Aktiviere diesen Schalter. Er blendet zusätzliche Optionen ein, die du für Sicherungen, Netzwerk und viele Integrationen brauchst. Ohne ihn fehlen dir später Menüpunkte, und du suchst vergeblich.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #c67139;background:#fbf1e6;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#a5551f">Mac-Hinweis:</strong> Wenn du das Design auf „Automatisch&#8220; stellst, richtet sich Home Assistant nach deiner macOS-Einstellung unter <strong>Systemeinstellungen → Erscheinungsbild</strong>. Wer den automatischen Wechsel von hell zu dunkel schon am Mac nutzt, bekommt ihn hier geschenkt.
+</div>
+
+
+
+<div style="border:2px dashed #d8c39c;border-radius:12px;background:#faf3e5;color:#8a7a58;text-align:center;padding:22px 18px;margin:8px 0;font-weight:600;font-family:inherit"><img src="https://s.w.org/images/core/emoji/16.0.1/72x72/1f4f8.png" alt="📸" class="wp-smiley" style="height: 1em; max-height: 1em;" /> SCREENSHOT EINFÜGEN — Profilseite mit Sprache „Deutsch&#8220; und aktiviertem Schalter „Erweiterter Modus&#8220; (diesen Block danach löschen)</div>
+
+
+
+<h2 class="wp-block-heading">Schritt 2: Standort, Zeitzone und Einheiten</h2>
+
+
+
+<p>Diese Angaben gelten fürs ganze System und sind die Grundlage für alles, was mit Zeit, Sonne und Wetter zu tun hat – etwa „schalte das Licht bei Sonnenuntergang ein&#8220;. Geh auf <strong>Einstellungen → System → Allgemein</strong>.</p>
+
+
+
+<ol class="wp-block-list">
+
+<li><strong>Standort:</strong> Zieh die Stecknadel auf der Karte auf dein Haus. Home Assistant braucht das für die exakten Zeiten von Sonnenauf- und -untergang – nicht für die Cloud.</li>
+
+
+<li><strong>Zeitzone:</strong> <code>Europe/Berlin</code>.</li>
+
+
+<li><strong>Einheitensystem:</strong> <strong>Metrisch</strong> (°C, km, Liter).</li>
+
+
+<li><strong>Währung:</strong> <strong>Euro (EUR)</strong> – wichtig, sobald du später das Energie-Dashboard mit Strompreisen nutzt.</li>
+
+
+<li><strong>Land:</strong> <strong>Deutschland</strong>. Das sorgt u. a. dafür, dass Feiertage und einige Integrationen korrekt vorbelegt sind.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #7a8a5e;background:#f2eeddff;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#5f6e46">Warum die Währung jetzt zählt:</strong> Wenn du sie gleich auf Euro stellst, rechnet dir Home Assistant später deine Stromkosten automatisch richtig aus. Stellst du sie erst nachträglich um, musst du manche Werte neu einrichten. Einmal richtig ist einfacher.
+</div>
+
+
+
+<h2 class="wp-block-heading">Schritt 3: Updates einspielen</h2>
+
+
+
+<p>Eine frische Installation ist selten die allerneueste Version. Bring das System einmal auf den aktuellen Stand, bevor du losbaust. Unter <strong>Einstellungen → System → Updates</strong> siehst du, ob etwas ansteht – meist getrennt nach <strong>Home Assistant Core</strong> (die eigentliche Software) und <strong>Home Assistant OS</strong> (das Betriebssystem darunter).</p>
+
+
+
+<ol class="wp-block-list">
+
+<li>Öffne die Update-Seite und lies kurz, was sich ändert (ein Klick auf das Update zeigt die Neuerungen).</li>
+
+
+<li>Spiel zuerst das <strong>Core</strong>-Update ein, danach ggf. das <strong>OS</strong>-Update. Home Assistant startet dabei kurz neu – das ist normal, die Seite lädt danach von selbst wieder.</li>
+
+
+<li>Warte jeden Neustart ab, bevor du das nächste Update startest.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #c67139;background:#fbf1e6;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#a5551f">Reihenfolge beachten:</strong> Erst sichern (Schritt 4), dann größere Updates. Home Assistant legt vor jedem Update automatisch eine Sicherung an – aber die nützt nur, wenn du weißt, wo sie liegt und wie du sie zurückspielst. Deshalb kommt die Sicherung als Nächstes.
+</div>
+
+
+
+<h2 class="wp-block-heading">Schritt 4: Sicherung einrichten – die wichtigste Aufgabe</h2>
+
+
+
+<p>Wenn du in diesem Artikel nur eine Sache umsetzt, dann diese. Home Assistant läuft auf einer SD-Karte, und SD-Karten fallen irgendwann aus – das ist keine Frage des Ob, sondern des Wann. Mit einer Sicherung bist du danach in Minuten wieder da, wo du warst. Ohne fängst du komplett von vorn an.</p>
+
+
+
+<p>Geh auf <strong>Einstellungen → System → Sicherungen</strong>.</p>
+
+
+
+<figure style="margin:16px 0;text-align:center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" style="width:100%;height:auto;max-width:720px" role="img" aria-label="Automatische Sicherung von Home Assistant zusätzlich auf ein zweites Ziel wie ein NAS oder einen Cloud-Speicher">
+  <rect x="2" y="2" width="716" height="236" rx="16" fill="#fffdf7" stroke="#e6d8bd"/>
+  <rect x="40" y="90" width="180" height="74" rx="12" fill="#fffdf7" stroke="#c67139" stroke-width="1.6"/>
+  <text x="130" y="122" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="15" fill="#2c2c2c">Home Assistant</text>
+  <text x="130" y="142" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#5f594d">läuft auf der SD-Karte</text>
+  <defs><marker id="hvB1" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#7a8a5e"/></marker></defs>
+  <line x1="220" y1="112" x2="300" y2="90" stroke="#7a8a5e" stroke-width="2.2" marker-end="url(#hvB1)"/>
+  <line x1="220" y1="142" x2="300" y2="164" stroke="#7a8a5e" stroke-width="2.2" marker-end="url(#hvB1)"/>
+  <rect x="310" y="58" width="180" height="60" rx="12" fill="#eef1e6" stroke="#7a8a5e" stroke-width="1.4"/>
+  <text x="400" y="84" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#2c2c2c">Sicherung auf dem Pi</text>
+  <text x="400" y="103" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#5f6e46">automatisch, wöchentlich</text>
+  <rect x="310" y="138" width="180" height="60" rx="12" fill="#f9f0dd" stroke="#c67139" stroke-width="1.4"/>
+  <text x="400" y="164" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#2c2c2c">Zweites Ziel</text>
+  <text x="400" y="183" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#a5551f">NAS · Netzlaufwerk · Cloud</text>
+  <path d="M540 128 h60" stroke="#8a7a58" stroke-width="2" stroke-dasharray="2 5"/>
+  <text x="606" y="112" font-family="Arial,sans-serif" font-weight="800" font-size="13" fill="#2c2c2c">Wichtig:</text>
+  <text x="606" y="132" font-family="Arial,sans-serif" font-size="12" fill="#5f594d">Kopie außerhalb</text>
+  <text x="606" y="149" font-family="Arial,sans-serif" font-size="12" fill="#5f594d">der SD-Karte.</text>
+</svg>
+<figcaption style="font-size:14px;color:#5f594d;margin-top:8px">Automatisch sichern reicht nur, wenn die Kopie auch außerhalb der SD-Karte landet.</figcaption>
+</figure>
+
+
+
+<ol class="wp-block-list">
+
+<li><strong>Sofort eine erste Sicherung erstellen:</strong> Klick oben rechts auf <strong>Sicherung erstellen</strong> und lad sie anschließend über das Drei-Punkte-Menü auf deinen Mac herunter. Damit hast du für den Moment schon ein Netz.</li>
+
+
+<li><strong>Automatische Sicherung einrichten:</strong> Home Assistant führt dich beim ersten Mal durch einen Assistenten. Wähle einen <strong>wöchentlichen</strong> Rhythmus und wie viele Sicherungen aufbewahrt werden sollen (z. B. die letzten vier).</li>
+
+
+<li><strong>Ein zweites Ziel festlegen:</strong> Eine Sicherung, die nur auf derselben SD-Karte liegt, ist bei einem Kartenausfall mit weg. Lege deshalb ein weiteres Ziel fest – ideal ist ein Netzlaufwerk auf deiner <strong>Synology/NAS</strong>, alternativ ein anderer Speicherort im Netzwerk.</li>
+
+
+<li><strong>Verschlüsselung:</strong> Home Assistant verschlüsselt Sicherungen und zeigt dir einmalig einen <strong>Wiederherstellungsschlüssel</strong>. Schreib ihn dir auf und leg ihn sicher ab – ohne ihn lässt sich eine verschlüsselte Sicherung nicht zurückspielen.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #7a8a5e;background:#f2eeddff;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#5f6e46">Für dein Setup mit NAS:</strong> Wenn du ohnehin eine Synology im Haus hast, ist ein Netzwerk-Sicherungsziel dorthin die sauberste Lösung. Die Sicherung landet automatisch auf einer zweiten, dauerhaft laufenden Platte – und du musst nie wieder daran denken.
+</div>
+
+
+
+<div style="border:2px dashed #d8c39c;border-radius:12px;background:#faf3e5;color:#8a7a58;text-align:center;padding:22px 18px;margin:8px 0;font-weight:600;font-family:inherit"><img src="https://s.w.org/images/core/emoji/16.0.1/72x72/1f4f8.png" alt="📸" class="wp-smiley" style="height: 1em; max-height: 1em;" /> SCREENSHOT EINFÜGEN — Seite „Sicherungen&#8220; mit eingerichtetem automatischem Zeitplan und zweitem Speicherziel (diesen Block danach löschen)</div>
+
+
+
+<h2 class="wp-block-heading">Schritt 5: Dein Konto mit Zwei-Faktor absichern</h2>
+
+
+
+<p>Spätestens wenn Home Assistant später von unterwegs erreichbar sein soll, reicht ein Passwort allein nicht mehr. Die Zwei-Faktor-Authentifizierung (2FA) hängt einen zweiten Schlüssel dran: einen sechsstelligen Code, der alle 30 Sekunden wechselt. Selbst wenn jemand dein Passwort kennt, kommt er ohne dein iPhone nicht rein.</p>
+
+
+
+<ol class="wp-block-list">
+
+<li>Öffne dein <strong>Profil</strong> (Name unten links) und scroll zum Abschnitt <strong>Sicherheit</strong> bzw. <strong>Multi-Faktor-Authentifizierung</strong>.</li>
+
+
+<li>Wähle <strong>„Authentifizierungs-App aktivieren&#8220;</strong>. Home Assistant zeigt einen QR-Code.</li>
+
+
+<li>Scanne den Code mit einer Authenticator-App. Am iPhone geht das ohne Zusatz-App direkt über die eingebaute <strong>Passwörter-App</strong> (bei „Bestätigungscode einrichten&#8220;) – oder mit einer App wie einem gängigen Authenticator.</li>
+
+
+<li>Gib den angezeigten Code einmal zur Bestätigung ein. Fertig – ab jetzt fragt Home Assistant beim Anmelden nach dem Code.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #c67139;background:#fbf1e6;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#a5551f">Wichtig:</strong> Verlierst du den Zugriff auf die Authenticator-App, kommst du nur noch mit dem beim Einrichten angezeigten <strong>Notfall-Code</strong> rein. Notier ihn dir zusammen mit dem Backup-Schlüssel aus Schritt 4 an einem sicheren Ort.
+</div>
+
+
+
+<h2 class="wp-block-heading">Schritt 6: Räume anlegen und Geräte zuordnen</h2>
+
+
+
+<p>Home Assistant kann Geräte nach Räumen ordnen (im Menü heißen sie <strong>Bereiche</strong>). Das ist keine Spielerei: Sobald ein Gerät einem Raum zugeordnet ist, kannst du später Dinge sagen wie „alle Lichter im Wohnzimmer aus&#8220; – ohne jedes Gerät einzeln anzutippen. Und dein Dashboard baut sich fast von selbst.</p>
+
+
+
+<ol class="wp-block-list">
+
+<li>Geh auf <strong>Einstellungen → Bereiche &amp; Zonen</strong> und lege deine Räume an: Wohnzimmer, Küche, Büro, Schlafzimmer, Flur – so, wie dein Haus wirklich aufgeteilt ist.</li>
+
+
+<li>Optional kannst du Räume zu <strong>Etagen</strong> gruppieren (Erdgeschoss, Obergeschoss). Bei einem Haus über mehrere Stockwerke lohnt sich das.</li>
+
+
+<li>Ordne jedes Gerät seinem Raum zu – entweder gleich beim Einrichten oder später unter <strong>Einstellungen → Geräte &amp; Dienste → Geräte</strong>.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #7a8a5e;background:#f2eeddff;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#5f6e46">Kleiner Aufwand, große Wirkung:</strong> Räume anzulegen, bevor du viele Geräte verbindest, spart später viel Sortierarbeit. Es ist der Unterschied zwischen einem aufgeräumten Dashboard und einer endlosen Geräteliste.
+</div>
+
+
+
+<h2 class="wp-block-heading">Schritt 7: Werkzeuge und die App fürs iPhone</h2>
+
+
+
+<p>Zwei Dinge machen den Alltag deutlich angenehmer. Beide sind kostenlos und in wenigen Minuten erledigt.</p>
+
+
+
+<h3 class="wp-block-heading">Ein Add-on zum Bearbeiten von Dateien</h3>
+
+
+
+<p>Über <strong>Einstellungen → Add-ons → Add-on-Store</strong> installierst du kleine Zusatzprogramme. Zwei sind für den Anfang praktisch: <strong>File editor</strong> (oder das komfortablere <strong>Studio Code Server</strong>) zum Bearbeiten von Konfigurationsdateien im Browser und <strong>Terminal &amp; SSH</strong> für den Zugriff auf die Kommandozeile, falls du sie mal brauchst. Für die ersten Wochen musst du hier nichts einstellen – gut zu wissen, dass es sie gibt.</p>
+
+
+
+<h3 class="wp-block-heading">Die Companion-App aufs iPhone</h3>
+
+
+
+<p>Die offizielle <strong>Home Assistant</strong>-App im App Store ist mehr als nur eine mobile Oberfläche. Sie liefert dir Push-Benachrichtigungen aufs iPhone (z. B. „Waschmaschine fertig&#8220; oder „Tür seit 10 Minuten offen&#8220;) und meldet Home Assistant, ob du zu Hause bist – die Grundlage für Automatisierungen wie „Heizung runter, wenn alle weg sind&#8220;.</p>
+
+
+
+<ol class="wp-block-list">
+
+<li>Lade die App <strong>Home Assistant</strong> aus dem App Store und öffne sie.</li>
+
+
+<li>Solange iPhone und Pi im selben WLAN sind, findet die App deine Installation meist automatisch. Andernfalls gibst du <code>http://homeassistant.local:8123</code> von Hand ein und meldest dich mit deinem Konto an.</li>
+
+
+<li>Erlaube <strong>Mitteilungen</strong> und – für die Anwesenheitserkennung – den <strong>Standortzugriff</strong>. Ohne diese Freigaben kann die App weder benachrichtigen noch erkennen, ob du daheim bist.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #c67139;background:#fbf1e6;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#a5551f">Von unterwegs erreichbar?</strong> Zu Hause im WLAN funktioniert die App sofort. Damit sie auch von unterwegs geht, braucht Home Assistant einen sicheren Fernzugang. Wie das ohne offene Ports über einen Cloudflare Tunnel läuft, ist ein eigenes Thema – dazu kommt ein separater Artikel.
+</div>
+
+
+
+<h2 class="wp-block-heading">Wenn es nicht funktioniert</h2>
+
+
+
+<p>Die typischen Stolpersteine bei den ersten Einstellungen – mit der jeweiligen Lösung.</p>
+
+
+
+<h3 class="wp-block-heading">Ich finde einen beschriebenen Menüpunkt nicht</h3>
+
+
+
+<p>Fast immer fehlt der <strong>erweiterte Modus</strong> aus Schritt 1. Öffne dein Profil und aktiviere den Schalter – danach tauchen die zusätzlichen Optionen auf. Einzelne Menüpunkte (z. B. der Add-on-Store) gibt es außerdem nur bei Home Assistant OS, nicht bei jeder Installationsart.</p>
+
+
+
+<h3 class="wp-block-heading">Es steht kein Update zur Verfügung, obwohl es eine neue Version gibt</h3>
+
+
+
+<p>Neue Versionen werden nicht bei allen gleichzeitig ausgerollt. Warte einen Tag oder lade die Update-Seite neu. Wichtiger als die allerneueste Version ist ohnehin, dass eine Sicherung existiert.</p>
+
+
+
+<h3 class="wp-block-heading">Die automatische Sicherung lässt sich nicht auf mein NAS legen</h3>
+
+
+
+<p>Das Netzwerkziel muss vorher unter <strong>Einstellungen → System → Speicher</strong> als Netzwerkspeicher hinzugefügt werden. Prüfe Freigabename, Benutzer und Passwort deiner NAS-Freigabe. Erst danach taucht das Ziel bei den Sicherungen als Speicherort auf.</p>
+
+
+
+<h3 class="wp-block-heading">Die iPhone-App findet meine Installation nicht</h3>
+
+
+
+<p>Meist sind iPhone und Pi in unterschiedlichen Netzen (z. B. ein separates Gäste-WLAN). Verbinde beide mit demselben WLAN und gib die Adresse notfalls von Hand ein: <code>http://homeassistant.local:8123</code>, alternativ die IP-Adresse des Pi.</p>
+
+
+
+<h3 class="wp-block-heading">Ich bin mit 2FA ausgesperrt</h3>
+
+
+
+<p>Dafür gibt es den <strong>Notfall-Code</strong>, den Home Assistant beim Einrichten der Zwei-Faktor-Authentifizierung angezeigt hat. Gib ihn statt des Sechsstelligen ein. Deshalb der Rat aus Schritt 5: diesen Code sofort sicher notieren.</p>
+
+
+
+<h2 class="wp-block-heading">Fazit: Was du jetzt hast</h2>
+
+
+
+<p>Mit diesen sieben Einstellungen ist aus der frischen Installation ein System geworden, das dir gehört und auf das du dich verlassen kannst: auf Deutsch, mit korrekten Zeiten und Einheiten, aktuell, gesichert, gegen fremden Zugriff geschützt und sauber nach Räumen sortiert. Genau diese Basis erspart dir später die häufigsten Frustmomente – allen voran den einen, den niemand zweimal erleben will: Datenverlust ohne Backup.</p>
+
+
+
+<p>Der schöne Nebeneffekt: Fast alles hier ist eine einmalige Sache. Einmal richtig eingestellt, arbeitest du ab jetzt nur noch am Spannenden – deinen Geräten und Automatisierungen.</p>
+
+
+
+<p><strong>Wie geht&#8217;s weiter?</strong> Jetzt, wo die Grundlage steht, lohnt sich der Blick auf das Energie-Dashboard: Damit machst du sichtbar, was dein Haushalt tatsächlich an Strom verbraucht – und legst den Grundstein, um Kosten zu senken. Genau darum geht es im nächsten Artikel.</p>
+
+
+
+<div style="border-left:4px solid #7a8a5e;background:#f2eeddff;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#5f6e46">Extra-Tipp für den Dauerbetrieb:</strong> Ein Stromausfall trifft die SD-Karte am härtesten, wenn der Pi mitten im Schreiben ist. Eine kleine unterbrechungsfreie Stromversorgung (USV) (Werbung) überbrückt kurze Ausfälle und fährt den Pi sauber herunter – günstige Lebensversicherung für dein Setup.
+</div>
+
+
+
+<p><strong>Werbung:</strong> Die mit „Werbung&#8220; gekennzeichneten Produktlinks in diesem Artikel sind Provisionslinks. Kaufst du darüber ein, erhalte ich eine kleine Provision. Für dich ändert sich der Preis dadurch nicht.</p>
+
 ]]></content:encoded>
 					
-					<wfw:commentRss>/2020/12/20/hallo-welt/feed/</wfw:commentRss>
-			<slash:comments>1</slash:comments>
+					<wfw:commentRss>/grundeinstellungen/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Home Assistant auf dem Raspberry Pi 4 installieren – Schritt für Schritt am Mac (2026)</title>
+		<link>/home-assistant-auf-dem-raspberry-pi-4-installieren-schritt-fuer-schritt-am-machomeassistant-aufsetzen/</link>
+					<comments>/home-assistant-auf-dem-raspberry-pi-4-installieren-schritt-fuer-schritt-am-machomeassistant-aufsetzen/#respond</comments>
+		
+		<dc:creator><![CDATA[comabo]]></dc:creator>
+		<pubDate>Sun, 06 Sep 2026 07:38:02 +0000</pubDate>
+				<category><![CDATA[Home Assistant]]></category>
+		<guid isPermaLink="false">/?p=129</guid>
+
+					<description><![CDATA[Du hast einen Raspberry&#160;Pi&#160;4, einen Mac und willst dein Smart Home endlich selbst in der Hand haben – ohne Cloud-Zwang und ohne monatliche Gebühr. Diese Anleitung bringt dich vom leeren Pi zur laufenden Home-Assistant-Oberfläche. Zuletzt nachgebaut und verifiziert: September 2026. Worum es geht Home Assistant ist die freie Zentrale fürs Smart Home: Sie läuft bei [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Du hast einen Raspberry&nbsp;Pi&nbsp;4, einen Mac und willst dein Smart Home endlich selbst in der Hand haben – ohne Cloud-Zwang und ohne monatliche Gebühr. Diese Anleitung bringt dich vom leeren Pi zur laufenden Home-Assistant-Oberfläche.</p>
+
+
+
+<p><em>Zuletzt nachgebaut und verifiziert: September 2026.</em></p>
+
+
+
+<h2 class="wp-block-heading">Worum es geht</h2>
+
+
+
+<p>Home Assistant ist die freie Zentrale fürs Smart Home: Sie läuft bei dir zu Hause statt in einer fremden Cloud, spricht mit über 2.000&nbsp;Geräten unabhängig vom Hersteller und kostet nichts. Der einfachste und stabilste Weg für den Einstieg ist <strong>Home Assistant OS</strong> – ein fertiges Komplettsystem, das direkt auf dem Raspberry&nbsp;Pi&nbsp;4 läuft, ohne dass du dich mit Linux, Docker oder der Kommandozeile beschäftigen musst.</p>
+
+
+
+<p>Am Mac ist das sogar ein Stück angenehmer als unter Windows: Der Dienst, über den du den Pi später im Browser findest (<code>homeassistant.local</code>), ist unter macOS von Haus aus eingebaut. Du brauchst also keine Zusatzsoftware – nur den Pi, eine SD-Karte und rund 30&nbsp;Minuten.</p>
+
+
+
+<div style="background:#2c2c2c;color:#f3ead9;border-radius:16px;padding:22px 24px;margin:8px 0 8px;font-family:inherit">
+  <div style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#c67139;font-weight:800;margin-bottom:14px">Getestet mit</div>
+  <table style="width:100%;border-collapse:collapse;font-size:15px">
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Hardware</td><td style="padding:4px 0;font-family:monospace">Raspberry Pi 4 Model B (4 GB)</td></tr>
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Home Assistant OS</td><td style="padding:4px 0;font-family:monospace">18.2 (64-bit)</td></tr>
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Home Assistant Core</td><td style="padding:4px 0;font-family:monospace">2026.9</td></tr>
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Raspberry Pi Imager</td><td style="padding:4px 0;font-family:monospace">1.9.x</td></tr>
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Mac</td><td style="padding:4px 0;font-family:monospace">macOS Sequoia / Tahoe</td></tr>
+    <tr><td style="padding:4px 16px 4px 0;color:#b8ae9c;white-space:nowrap">Stand</td><td style="padding:4px 0;font-family:monospace">September 2026</td></tr>
+  </table>
+</div>
+
+
+
+<h2 class="wp-block-heading">Was du brauchst</h2>
+
+
+
+<p>Die Liste ist kurz, aber zwei Punkte entscheiden über Erfolg oder Frust: ein <strong>ordentliches Netzteil</strong> und eine <strong>vernünftige SD-Karte</strong>. An beidem zu sparen ist der häufigste Grund für spätere Abstürze.</p>
+
+
+
+<ul class="wp-block-list">
+
+<li><strong>Raspberry Pi 4 Model B</strong> (Werbung) – 2&nbsp;GB reichen zum Ausprobieren, 4&nbsp;GB sind die vernünftige Wahl mit Reserve für später.</li>
+
+
+<li><strong>microSD-Karte ab 32&nbsp;GB, „A2&#8243;</strong> (Werbung) – ein Markenmodell mit A2-Kennzeichnung (SanDisk, Samsung). Billige No-Name-Karten sterben unter Dauerlast schnell.</li>
+
+
+<li><strong>Original-Netzteil USB-C (5,1&nbsp;V / 3&nbsp;A)</strong> (Werbung) – am besten das offizielle Raspberry-Pi-Netzteil. Handy-Lader oder der USB-Port am Mac liefern zu wenig – das rächt sich später mit Warnsymbolen und Aussetzern.</li>
+
+
+<li><strong>Netzwerkkabel (LAN)</strong> – für die Einrichtung ganz klar per Kabel an den Router, zuverlässiger und schneller als WLAN. WLAN lässt sich später umstellen.</li>
+
+
+<li><strong>Dein Mac + ein SD-Kartenleser</strong> – viele Macs haben keinen SD-Slot mehr, dann tut es ein günstiger USB-C-Kartenleser.</li>
+
+</ul>
+
+
+
+<div style="border-left:4px solid #7a8a5e;background:#f2eeddff;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#5f6e46">Optional, aber empfehlenswert:</strong> ein Gehäuse mit passivem Kühlkörper. Der Pi&nbsp;4 wird unter Last warm; ein Gehäuse mit Kühlung hält ihn kühl und leise.
+</div>
+
+
+
+<h2 class="wp-block-heading">Der Weg im Überblick</h2>
+
+
+
+<p>Vier Schritte, mehr ist es nicht. Wenn du weißt, wo es hingeht, ist der Rest reines Abarbeiten:</p>
+
+
+
+<figure style="margin:16px 0">
+<svg viewBox="0 0 720 200" style="width:100%;height:auto;display:block" role="img" aria-label="Ablauf in vier Schritten: Imager installieren, SD-Karte schreiben, Pi starten, im Browser einrichten">
+  <defs><marker id="arwOv" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#c67139"/></marker></defs>
+  <rect x="8" y="40" width="150" height="120" rx="14" fill="#fffdf7" stroke="#e6d8bd"/>
+  <circle cx="83" cy="74" r="20" fill="#f5ead8" stroke="#c67139" stroke-width="1.5"/>
+  <path d="M74 74 l7 7 l12 -14" fill="none" stroke="#c67139" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="83" y="118" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="15" fill="#2c2c2c">1 · Imager</text>
+  <text x="83" y="138" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5f594d">installieren</text>
+  <line x1="162" y1="100" x2="196" y2="100" stroke="#c67139" stroke-width="2" marker-end="url(#arwOv)"/>
+  <rect x="200" y="40" width="150" height="120" rx="14" fill="#fffdf7" stroke="#e6d8bd"/>
+  <rect x="255" y="54" width="40" height="30" rx="3" fill="#f5ead8" stroke="#c67139" stroke-width="1.5"/>
+  <path d="M262 54 v8 M270 54 v8 M278 54 v8" stroke="#c67139" stroke-width="1.5"/>
+  <text x="275" y="118" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="15" fill="#2c2c2c">2 · SD-Karte</text>
+  <text x="275" y="138" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5f594d">beschreiben</text>
+  <line x1="354" y1="100" x2="388" y2="100" stroke="#c67139" stroke-width="2" marker-end="url(#arwOv)"/>
+  <rect x="392" y="40" width="150" height="120" rx="14" fill="#fffdf7" stroke="#e6d8bd"/>
+  <rect x="447" y="56" width="40" height="26" rx="3" fill="#f5ead8" stroke="#7a8a5e" stroke-width="1.5"/>
+  <circle cx="467" cy="69" r="6" fill="none" stroke="#7a8a5e" stroke-width="1.5"/>
+  <path d="M467 66 v3" stroke="#7a8a5e" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="467" y="118" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="15" fill="#2c2c2c">3 · Pi</text>
+  <text x="467" y="138" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5f594d">starten</text>
+  <line x1="546" y1="100" x2="580" y2="100" stroke="#c67139" stroke-width="2" marker-end="url(#arwOv)"/>
+  <rect x="584" y="40" width="128" height="120" rx="14" fill="#7a8a5e"/>
+  <rect x="628" y="54" width="40" height="30" rx="3" fill="none" stroke="#fff" stroke-width="1.6"/>
+  <path d="M628 62 h40" stroke="#fff" stroke-width="1.6"/>
+  <circle cx="633" cy="58" r="1.4" fill="#fff"/>
+  <text x="648" y="118" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="15" fill="#fff">4 · Browser</text>
+  <text x="648" y="138" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#eef2e4">einrichten</text>
+</svg>
+<figcaption style="font-size:14px;color:#5f594d;text-align:center;margin-top:8px">Vom leeren Pi zur fertigen Oberfläche in vier Schritten.</figcaption>
+</figure>
+
+
+
+<h2 class="wp-block-heading">Schritt 1: Raspberry Pi Imager am Mac installieren</h2>
+
+
+
+<ol class="wp-block-list">
+
+<li>Öffne <a href="https://www.raspberrypi.com/software/">raspberrypi.com/software</a> und lade den <strong>Raspberry Pi Imager für macOS</strong> herunter. Das ist das offizielle Werkzeug, das die SD-Karte für dich beschreibt.</li>
+
+
+<li>Öffne die geladene <code>.dmg</code>-Datei und ziehe das Imager-Symbol wie gewohnt in den Ordner <strong>Programme</strong>.</li>
+
+
+<li>Starte den Imager aus dem Programme-Ordner.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #c67139;background:#fbf1e6;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#a5551f">Mac-Hinweis:</strong> Sollte beim ersten Start die Meldung kommen, das Programm stamme aus einer nicht verifizierten Quelle, öffne <strong>Systemeinstellungen → Datenschutz &amp; Sicherheit</strong>, scrolle nach unten und klicke bei der Imager-Meldung auf <strong>„Dennoch öffnen&#8220;</strong>. Das ist bei frisch geladenen Programmen normal.
+</div>
+
+
+
+<div style="border:2px dashed #d8c39c;border-radius:12px;background:#faf3e5;color:#8a7a58;text-align:center;padding:22px 18px;margin:8px 0;font-weight:600;font-family:inherit"><img src="https://s.w.org/images/core/emoji/16.0.1/72x72/1f4f8.png" alt="📸" class="wp-smiley" style="height: 1em; max-height: 1em;" /> SCREENSHOT EINFÜGEN – Raspberry Pi Imager, Startfenster mit den drei Schaltflächen</div>
+
+
+
+<h2 class="wp-block-heading">Schritt 2: Home Assistant OS auf die SD-Karte schreiben</h2>
+
+
+
+<p>Steck die microSD-Karte (im Kartenleser) in den Mac. Im Imager triffst du jetzt drei Auswahlen – von links nach rechts:</p>
+
+
+
+<figure style="margin:16px 0">
+<svg viewBox="0 0 720 250" style="width:100%;height:auto;display:block" role="img" aria-label="Die drei Auswahlfelder im Raspberry Pi Imager: Gerät, Betriebssystem, Speicher">
+  <rect x="8" y="8" width="704" height="234" rx="16" fill="#fffdf7" stroke="#e6d8bd"/>
+  <text x="30" y="42" font-family="sans-serif" font-weight="800" font-size="15" fill="#2c2c2c">Raspberry Pi Imager</text>
+  <rect x="30" y="66" width="200" height="140" rx="12" fill="#f9f0dd" stroke="#d8c39c"/>
+  <text x="46" y="92" font-family="monospace" font-size="12" fill="#a5551f">RASPBERRY PI-GERÄT</text>
+  <rect x="46" y="104" width="168" height="34" rx="8" fill="#fff" stroke="#c67139" stroke-width="1.4"/>
+  <text x="60" y="126" font-family="sans-serif" font-weight="700" font-size="14" fill="#2c2c2c">Raspberry Pi 4</text>
+  <text x="46" y="166" font-family="sans-serif" font-size="12.5" fill="#5f594d">Wähle dein</text>
+  <text x="46" y="184" font-family="sans-serif" font-size="12.5" fill="#5f594d">exaktes Modell.</text>
+  <rect x="258" y="66" width="200" height="140" rx="12" fill="#f9f0dd" stroke="#d8c39c"/>
+  <text x="274" y="92" font-family="monospace" font-size="12" fill="#a5551f">BETRIEBSSYSTEM</text>
+  <rect x="274" y="104" width="168" height="34" rx="8" fill="#fff" stroke="#c67139" stroke-width="1.4"/>
+  <text x="288" y="126" font-family="sans-serif" font-weight="700" font-size="13" fill="#2c2c2c">Home Assistant</text>
+  <text x="274" y="166" font-family="sans-serif" font-size="12.5" fill="#5f594d">Über das Menü</text>
+  <text x="274" y="184" font-family="sans-serif" font-size="12.5" fill="#5f594d">(siehe unten).</text>
+  <rect x="486" y="66" width="200" height="140" rx="12" fill="#f9f0dd" stroke="#d8c39c"/>
+  <text x="502" y="92" font-family="monospace" font-size="12" fill="#a5551f">SPEICHER</text>
+  <rect x="502" y="104" width="168" height="34" rx="8" fill="#fff" stroke="#c67139" stroke-width="1.4"/>
+  <text x="516" y="126" font-family="sans-serif" font-weight="700" font-size="14" fill="#2c2c2c">Deine SD-Karte</text>
+  <text x="502" y="166" font-family="sans-serif" font-size="12.5" fill="#5f594d">Aufpassen: die</text>
+  <text x="502" y="184" font-family="sans-serif" font-size="12.5" fill="#5f594d">richtige wählen!</text>
+</svg>
+<figcaption style="font-size:14px;color:#5f594d;text-align:center;margin-top:8px">Die drei Auswahlfelder im Imager – von links nach rechts abarbeiten.</figcaption>
+</figure>
+
+
+
+<ol class="wp-block-list">
+
+<li><strong>Raspberry Pi-Gerät:</strong> Klick auf „Gerät wählen&#8220; und such <strong>Raspberry Pi 4</strong> aus der Liste.</li>
+
+
+<li><strong>Betriebssystem:</strong> Klick auf „OS wählen&#8220; und folge dem Menü: <code>Other specific-purpose OS</code> → <code>Home automation</code> → <code>Home Assistant</code>. Dort wählst du <strong>Home Assistant OS … (RPi 4/400)</strong> in der 64-bit-Variante.</li>
+
+
+<li><strong>Speicher:</strong> Klick auf „Speicher wählen&#8220; und wähle <strong>deine SD-Karte</strong> aus.</li>
+
+
+<li>Klick auf <strong>„Weiter&#8220;</strong>. Wenn nach Einstellungen gefragt wird, kannst du sie für den Einstieg überspringen. macOS fragt einmal nach deinem Anmeldepasswort, um auf die SD-Karte schreiben zu dürfen – das ist normal. Dann läuft das Schreiben und Prüfen (ein paar Minuten).</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #7a8a5e;background:#f2eeddff;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#5f6e46">Wichtig:</strong> Prüfe zweimal, dass du wirklich die SD-Karte erwischst und nicht versehentlich eine externe Festplatte. Der Inhalt wird komplett überschrieben.
+</div>
+
+
+
+<div style="border:2px dashed #d8c39c;border-radius:12px;background:#faf3e5;color:#8a7a58;text-align:center;padding:22px 18px;margin:8px 0;font-weight:600;font-family:inherit"><img src="https://s.w.org/images/core/emoji/16.0.1/72x72/1f4f8.png" alt="📸" class="wp-smiley" style="height: 1em; max-height: 1em;" /> SCREENSHOT EINFÜGEN – Menüpfad „Other specific-purpose OS → Home automation → Home Assistant&#8220;</div>
+
+
+
+<h2 class="wp-block-heading">Schritt 3: Den Raspberry Pi starten</h2>
+
+
+
+<p>Jetzt kommt die Hardware. Der Aufbau ist bewusst simpel – der Pi hängt am Kabel, dein Mac bleibt einfach im selben WLAN:</p>
+
+
+
+<figure style="margin:16px 0">
+<svg viewBox="0 0 720 270" style="width:100%;height:auto;display:block" role="img" aria-label="Aufbau: Raspberry Pi per LAN-Kabel am Router, Mac im WLAN, beide im selben Netzwerk">
+  <rect x="290" y="18" width="140" height="58" rx="12" fill="#2c2c2c"/>
+  <text x="360" y="44" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="15" fill="#f3ead9">Router</text>
+  <text x="360" y="63" text-anchor="middle" font-family="sans-serif" font-size="11.5" fill="#b8ae9c">dein Heimnetz</text>
+  <path d="M348 12 v-2 M360 10 v-4 M372 12 v-2" stroke="#7a8a5e" stroke-width="2" stroke-linecap="round"/>
+  <rect x="70" y="168" width="180" height="74" rx="12" fill="#fffdf7" stroke="#c67139" stroke-width="1.6"/>
+  <text x="160" y="200" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="15" fill="#2c2c2c">Raspberry Pi 4</text>
+  <text x="160" y="220" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5f594d">mit SD-Karte + Strom</text>
+  <path d="M250 190 C 300 190, 300 60, 300 52" fill="none" stroke="#c67139" stroke-width="2.5"/>
+  <text x="240" y="120" font-family="monospace" font-size="12" fill="#a5551f">LAN-Kabel</text>
+  <rect x="470" y="168" width="180" height="74" rx="12" fill="#fffdf7" stroke="#7a8a5e" stroke-width="1.6"/>
+  <text x="560" y="200" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="15" fill="#2c2c2c">Dein Mac</text>
+  <text x="560" y="220" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5f594d">Browser</text>
+  <path d="M470 190 C 420 190, 420 60, 420 52" fill="none" stroke="#7a8a5e" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round"/>
+  <text x="428" y="120" font-family="monospace" font-size="12" fill="#5f6e46">WLAN</text>
+  <path d="M470 232 C 360 268, 250 268, 250 236" fill="none" stroke="#bdae8e" stroke-width="1.4" stroke-dasharray="4 5"/>
+  <text x="360" y="260" text-anchor="middle" font-family="sans-serif" font-size="11.5" fill="#8a7a58">homeassistant.local:8123</text>
+</svg>
+<figcaption style="font-size:14px;color:#5f594d;text-align:center;margin-top:8px">Pi per Kabel an den Router, Mac bleibt im WLAN – Hauptsache dasselbe Netzwerk.</figcaption>
+</figure>
+
+
+
+<ol class="wp-block-list">
+
+<li>Schieb die fertig beschriebene SD-Karte in den Slot auf der Unterseite des Pi.</li>
+
+
+<li>Steck das <strong>Netzwerkkabel</strong> ein und verbinde es mit deinem Router.</li>
+
+
+<li>Zuletzt das <strong>Netzteil</strong> anschließen – damit startet der Pi. Es gibt keinen Ein-Schalter.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #7a8a5e;background:#f2eeddff;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#5f6e46">Jetzt heißt es kurz warten.</strong> Beim allerersten Start richtet sich das System selbst ein. Auf einem Pi&nbsp;4 ist die Oberfläche meist innerhalb weniger Minuten erreichbar. Lass ihm die Zeit – nicht vorschnell den Strom ziehen.
+</div>
+
+
+
+<h2 class="wp-block-heading">Schritt 4: Home Assistant im Browser einrichten</h2>
+
+
+
+<ol class="wp-block-list">
+
+<li>Öffne am Mac deinen Browser und tippe in die Adresszeile: <code>http://homeassistant.local:8123</code></li>
+
+
+<li>Beim ersten Aufruf siehst du „Preparing Home Assistant&#8220;. Falls die Seite noch nicht lädt, gib dem Pi noch ein, zwei Minuten und lade neu.</li>
+
+
+<li>Leg dein <strong>Benutzerkonto</strong> an: Name, Benutzername und ein sicheres Passwort. Dieses Konto bleibt komplett bei dir auf dem Pi – es geht an keine Cloud.</li>
+
+
+<li>Gib deinem Zuhause einen Namen und Standort (für Sonnenauf- und -untergang, Wetter, Zeitzone). Für unseren Standort passt die Zeitzone <strong>Europe/Berlin</strong> und die Einheit <strong>°C / km</strong>.</li>
+
+
+<li>Home Assistant durchsucht dein Netzwerk automatisch nach smarten Geräten und schlägt gefundene zur Einrichtung vor. Du kannst alles auch später hinzufügen – <strong>„Fertigstellen&#8220;</strong> genügt fürs Erste.</li>
+
+</ol>
+
+
+
+<div style="border-left:4px solid #c67139;background:#fbf1e6;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#a5551f">Warum das am Mac einfach klappt:</strong> macOS bringt die nötige Technik (Bonjour) von Haus aus mit, um den Pi unter diesem Namen zu finden. Windows-Nutzer müssen dafür extra Software installieren – du nicht.
+</div>
+
+
+
+<div style="border:2px dashed #d8c39c;border-radius:12px;background:#faf3e5;color:#8a7a58;text-align:center;padding:22px 18px;margin:8px 0;font-weight:600;font-family:inherit"><img src="https://s.w.org/images/core/emoji/16.0.1/72x72/1f4f8.png" alt="📸" class="wp-smiley" style="height: 1em; max-height: 1em;" /> SCREENSHOT EINFÜGEN – Onboarding, Konto anlegen und das fertige Dashboard</div>
+
+
+
+<p>Das war&#8217;s: Du hast eine laufende Home-Assistant-Installation, die dir gehört. Setz dir jetzt am besten gleich ein Lesezeichen auf <code>homeassistant.local:8123</code>.</p>
+
+
+
+<div style="border-left:4px solid #7a8a5e;background:#f2eeddff;border-radius:0 12px 12px 0;padding:14px 20px;margin:8px 0;font-family:inherit">
+  <strong style="color:#5f6e46">Empfehlung für den Alltag:</strong> Über <strong>Einstellungen → System → Sicherung</strong> gleich eine erste Sicherung anlegen und herunterladen. Falls die SD-Karte irgendwann streikt, bist du in Minuten wieder da, wo du warst.
+</div>
+
+
+
+<h2 class="wp-block-heading">Wenn es nicht funktioniert</h2>
+
+
+
+<p>Die typischen Stolpersteine – mit der jeweiligen Lösung. Erfahrungsgemäß liegt es fast immer an einem dieser fünf Punkte:</p>
+
+
+
+<h3 class="wp-block-heading">Die Seite <code>homeassistant.local:8123</code> lädt nicht</h3>
+
+
+
+<p>Gib dem Pi beim allerersten Start mehr Zeit – fünf Minuten sind okay. Prüfe, dass eine LED am Pi leuchtet und dass das Netzwerkkabel an beiden Enden richtig sitzt. Hilft das nicht, versuch es mit der IP-Adresse statt dem Namen (siehe nächster Punkt).</p>
+
+
+
+<h3 class="wp-block-heading">Der Name <code>homeassistant.local</code> wird gar nicht gefunden</h3>
+
+
+
+<p>Öffne am Mac die App <strong>Terminal</strong> und tippe <code>ping homeassistant.local</code>. Erscheint eine Adresse wie <code>192.168.1.x</code>, gib genau die im Browser ein: <code>http://192.168.1.x:8123</code>. Alternativ findest du die Adresse in der Geräteliste deines Routers (bei der FRITZ!Box unter „Heimnetz&#8220;).</p>
+
+
+
+<h3 class="wp-block-heading">Ein Blitz- oder Thermometer-Symbol oben rechts am Bildschirm</h3>
+
+
+
+<p>Das ist eine Unterspannungs- bzw. Überhitzungs-Warnung und kommt fast immer vom Netzteil oder Kabel. Nimm das offizielle Raspberry-Pi-Netzteil und ein kurzes, dickes USB-C-Kabel. Handy-Lader sind hier die häufigste Fehlerquelle.</p>
+
+
+
+<h3 class="wp-block-heading">Der Imager meldet „Verify failed&#8220; oder bricht ab</h3>
+
+
+
+<p>Meist ist die SD-Karte defekt oder ein billiges No-Name-Modell. Nimm eine Markenkarte (A2), setz sie im Kartenleser neu ein und schreib erneut. Auch ein anderer USB-Port am Mac kann helfen.</p>
+
+
+
+<h3 class="wp-block-heading">Der Pi bootet nicht – keine Reaktion, keine Oberfläche</h3>
+
+
+
+<p>Zieh den Strom, nimm die SD-Karte heraus und setz sie fest wieder ein. Prüfe, dass du im Imager wirklich das <strong>Home Assistant OS für RPi&nbsp;4</strong> (nicht Pi&nbsp;3 oder Pi&nbsp;5) gewählt hast. Im Zweifel die Karte einmal komplett neu beschreiben.</p>
+
+
+
+<h2 class="wp-block-heading">Fazit: Lohnt sich das?</h2>
+
+
+
+<p>Für den Einstieg ist der Raspberry&nbsp;Pi&nbsp;4 nach wie vor eine ehrliche Empfehlung: günstig, sparsam im Stromverbrauch und mehr als schnell genug für ein normales Haus mit ein paar Dutzend Geräten. Wer heute schon weiß, dass es später viele Kameras oder aufwändige Auswertungen werden sollen, greift eher zum Pi&nbsp;5 oder einem Mini-PC – aber das ist der Ausbau, nicht der Anfang.</p>
+
+
+
+<p>Der eigentliche Gewinn ist grundsätzlicher Natur: eine Smart-Home-Zentrale, die bei dir zu Hause läuft, unabhängig von Herstellern und ohne laufende Kosten. Genau das ist die Grundlage für alles Weitere – vom Stromzähler auslesen bis zur ersten Automatisierung. <strong>Und diese Basis steht jetzt.</strong></p>
+
+
+
+<p><strong>Wie geht&#8217;s weiter?</strong> Als Nächstes lohnt sich ein Blick auf das Energie-Dashboard – damit machst du sichtbar, was dein Haushalt tatsächlich verbraucht. Genau darum geht es im nächsten Artikel.</p>
+
+
+
+<div style="font-size:14.5px;color:#5f594d;background:#f2eeddff;border:1px dashed #d8c39c;border-radius:12px;padding:14px 18px;margin:16px 0;font-family:inherit">
+  <strong style="color:#2c2c2c">Werbung:</strong> Die mit „Werbung&#8220; gekennzeichneten Produktlinks in diesem Artikel sind Provisionslinks. Kaufst du darüber ein, erhalte ich eine kleine Provision. Für dich ändert sich der Preis dadurch nicht.
+</div>
+
+]]></content:encoded>
+					
+					<wfw:commentRss>/home-assistant-auf-dem-raspberry-pi-4-installieren-schritt-fuer-schritt-am-machomeassistant-aufsetzen/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
 		
 		
 			</item>
